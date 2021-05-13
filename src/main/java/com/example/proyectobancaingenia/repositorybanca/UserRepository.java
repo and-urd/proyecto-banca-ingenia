@@ -1,4 +1,4 @@
-package com.example.proyectobancaingenia.repository;
+package com.example.proyectobancaingenia.repositorybanca;
 
 
 import com.example.proyectobancaingenia.modelbanca.User;

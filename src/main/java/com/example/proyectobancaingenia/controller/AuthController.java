@@ -6,7 +6,7 @@ import com.example.proyectobancaingenia.payload.request.LoginRequest;
 import com.example.proyectobancaingenia.payload.request.SignupRequest;
 import com.example.proyectobancaingenia.payload.response.JwtResponse;
 import com.example.proyectobancaingenia.payload.response.MessageResponse;
-import com.example.proyectobancaingenia.repository.UserRepository;
+import com.example.proyectobancaingenia.repositorybanca.UserRepository;
 import com.example.proyectobancaingenia.security.jwt.JwtTokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
