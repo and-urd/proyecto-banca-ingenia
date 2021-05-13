@@ -29,11 +29,11 @@ public class Cuenta {
     )
     private List<User> users = new ArrayList<>();
 
-//   @OneToMany
-//   private List <Tarjeta> tarjetas = new ArrayList<>();
-//
-//    @OneToMany
-//    private List<Movimiento> movimientos = new ArrayList<>();
+    @OneToMany(mappedBy = "cuenta")
+    private List<Tarjeta> tarjetas = new ArrayList<>();
+
+    @OneToMany(mappedBy = "cuenta")
+    private List<Movimiento> movimientos = new ArrayList<>();
 
     public Cuenta() {
     }
@@ -78,6 +78,21 @@ public class Cuenta {
         this.users = users;
     }
 
+    public List<Tarjeta> getTarjetas() {
+        return tarjetas;
+    }
+
+    public void setTarjetas(List<Tarjeta> tarjetas) {
+        this.tarjetas = tarjetas;
+    }
+
+    public List<Movimiento> getMovimientos() {
+        return movimientos;
+    }
+
+    public void setMovimientos(List<Movimiento> movimientos) {
+        this.movimientos = movimientos;
+    }
 
     @Override
     public String toString() {
@@ -86,6 +101,6 @@ public class Cuenta {
                 ", numeroCuenta='" + numeroCuenta + '\'' +
                 ", tipoCuenta='" + tipoCuenta + '\'' +
                 ", saldo=" + saldo +
-                '}'; //TODO: Agregar campo user
+                '}'; //TODO: Agregar campo user, tarjeta, movimiento
     }
 }

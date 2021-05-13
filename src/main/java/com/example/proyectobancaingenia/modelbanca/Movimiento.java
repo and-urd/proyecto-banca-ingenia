@@ -29,7 +29,9 @@ public class Movimiento {
     @Column(name="num_tarjeta")
     private String numTarjeta;
 
-    // todo FK Cuenta (ManyToOne)
+    @ManyToOne
+    @JoinColumn(name="id_cuenta")
+    private Cuenta cuenta;
 
     // todo FK Categoria (ManyToOne)
 
@@ -105,7 +107,13 @@ public class Movimiento {
         this.numTarjeta = numTarjeta;
     }
 
-    // todo - faltan campos FK
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
 
     // METODO TOSTRING
 

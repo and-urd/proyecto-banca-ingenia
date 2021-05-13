@@ -25,7 +25,9 @@ public class Tarjeta {
     @Column(name = "tipo_tarjeta")
     private String tipoTarjeta;
 
-    // todo - FK Cuenta (ManyToOne)
+    @ManyToOne
+    @JoinColumn(name="id_cuenta")
+    private Cuenta cuenta;
 
     // CONSTRUCTORES
 
