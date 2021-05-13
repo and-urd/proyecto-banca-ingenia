@@ -1,7 +1,11 @@
 package com.example.proyectobancaingenia.model;
 
 
+import com.example.proyectobancaingenia.modelbanca.Cuenta;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -16,6 +20,13 @@ public class User {
     private String email;
 
     private String password;
+
+    private String direccion;
+
+    private String telefono;
+
+//    @ManyToMany (mappedBy = "usuarios")
+//    private List<Cuenta> cuentas = new ArrayList<>();
 
     public User() {
     }
@@ -56,5 +67,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }
