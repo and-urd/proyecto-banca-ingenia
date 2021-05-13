@@ -25,8 +25,8 @@ public class User {
 
     private String telefono;
 
-//    @ManyToMany (mappedBy = "usuarios")
-//    private List<Cuenta> cuentas = new ArrayList<>();
+    @ManyToMany (mappedBy = "users")
+    private List<Cuenta> cuentas = new ArrayList<>();
 
     public User() {
     }

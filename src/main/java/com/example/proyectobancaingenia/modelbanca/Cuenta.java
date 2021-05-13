@@ -23,17 +23,17 @@ public class Cuenta {
     @Column(name="saldo")
     private Double saldo;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "cuenta_usuario",
-//            joinColumns = {@JoinColumn(name="cuenta_id", referencedColumnName = "id")},
-//            inverseJoinColumns = {@JoinColumn(name="usuario_id", referencedColumnName = "id")}
-//    )
-//    private List<User> usuarios = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "cuentas_users",
+            joinColumns = {@JoinColumn(name="cuenta_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name="user_id", referencedColumnName = "id")}
+    )
+    private List<User> users = new ArrayList<>();
 
 //    @OneToMany
-//    private List <Tarjeta> tarjetas = new ArrayList<>();
-
+//   private List <Tarjeta> tarjetas = new ArrayList<>();
+//
 //    @OneToMany
 //    private List<Movimiento> movimientos = new ArrayList<>();
 
@@ -72,6 +72,15 @@ public class Cuenta {
         this.saldo = saldo;
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+
     @Override
     public String toString() {
         return "Cuenta{" +
@@ -79,6 +88,6 @@ public class Cuenta {
                 ", numeroCuenta='" + numeroCuenta + '\'' +
                 ", tipoCuenta='" + tipoCuenta + '\'' +
                 ", saldo=" + saldo +
-                '}';
+                '}'; //TODO: Agregar campo user
     }
 }
