@@ -15,8 +15,8 @@ public class Categoria {
     @Column(name = "tipo_categoria")
     private String tipoCategoria;
 
-//   @OneToMany
-//   private List<Movimiento> movimientos = new ArrayList<>();
+   @OneToMany(mappedBy = "categoria")
+   private List<Movimiento> movimientos = new ArrayList<>();
 
     public Categoria() {}
 
@@ -34,6 +34,14 @@ public class Categoria {
 
     public void setTipoCategoria(String tipoCategoria) {
         this.tipoCategoria = tipoCategoria;
+    }
+
+    public List<Movimiento> getMovimientos() {
+        return movimientos;
+    }
+
+    public void setMovimientos(List<Movimiento> movimientos) {
+        this.movimientos = movimientos;
     }
 
     @Override

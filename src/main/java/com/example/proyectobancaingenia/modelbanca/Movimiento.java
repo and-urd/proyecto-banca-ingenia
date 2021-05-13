@@ -33,7 +33,9 @@ public class Movimiento {
     @JoinColumn(name="id_cuenta")
     private Cuenta cuenta;
 
-    // todo FK Categoria (ManyToOne)
+    @ManyToOne
+    @JoinColumn(name="id_categoria")
+    private Categoria categoria;
 
     // CONSTRUCTORES
     public Movimiento() {
@@ -113,6 +115,14 @@ public class Movimiento {
 
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     // METODO TOSTRING
