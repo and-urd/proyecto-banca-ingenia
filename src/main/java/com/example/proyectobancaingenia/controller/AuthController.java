@@ -1,7 +1,7 @@
 package com.example.proyectobancaingenia.controller;
 
 
-import com.example.proyectobancaingenia.model.User;
+import com.example.proyectobancaingenia.modelbanca.User;
 import com.example.proyectobancaingenia.payload.request.LoginRequest;
 import com.example.proyectobancaingenia.payload.request.SignupRequest;
 import com.example.proyectobancaingenia.payload.response.JwtResponse;

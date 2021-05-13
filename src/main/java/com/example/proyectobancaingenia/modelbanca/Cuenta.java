@@ -1,7 +1,5 @@
 package com.example.proyectobancaingenia.modelbanca;
 
-import com.example.proyectobancaingenia.model.User;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +29,7 @@ public class Cuenta {
     )
     private List<User> users = new ArrayList<>();
 
-//    @OneToMany
+//   @OneToMany
 //   private List <Tarjeta> tarjetas = new ArrayList<>();
 //
 //    @OneToMany

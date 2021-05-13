@@ -1,4 +1,4 @@
-package com.example.proyectobancaingenia.model;
+package com.example.proyectobancaingenia.modelbanca;
 
 
 import com.example.proyectobancaingenia.modelbanca.Cuenta;

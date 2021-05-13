@@ -1,7 +1,7 @@
 package com.example.proyectobancaingenia.repository;
 
 
-import com.example.proyectobancaingenia.model.User;
+import com.example.proyectobancaingenia.modelbanca.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
