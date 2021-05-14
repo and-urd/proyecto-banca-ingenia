@@ -8,18 +8,23 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CuentaServiceImpl implements CuentaService {
 
     // Inyección del repositorio
     private final CuentaRepository cuentaRepository;
+
     public CuentaServiceImpl(CuentaRepository cuentaRepository) {
         this.cuentaRepository = cuentaRepository;
     }
 
-
-
+    // Devuelve una cuenta por ID
+    @Override
+    public Optional<Cuenta> recuperarCuentaPorId(Long id) {
+        return cuentaRepository.findById(id);
+    }
 
 
     // Devuelve las cuentas de un usuario por su id
@@ -35,7 +40,7 @@ public class CuentaServiceImpl implements CuentaService {
             List<User> listadoUsers = listadoCuentas.get(i).getUsers();
 
             for (int j = 0; j < listadoUsers.size(); j++) {
-                if(listadoUsers.get(j).getId() == idUsuario)
+                if (listadoUsers.get(j).getId() == idUsuario)
                     listadoResultante.add(listadoCuentas.get(i).getNumeroCuenta());
             }
         }
@@ -43,15 +48,16 @@ public class CuentaServiceImpl implements CuentaService {
         return listadoResultante;
     }
 
+    // Devuelve el saldo de una cuenta por numero de cuenta
     @Override
     public Double saldoDeCuenta(String numCuenta) {
         List<Cuenta> listadoCuentas = cuentaRepository.findAll();
 
-        Double saldoResultante= 0.0;
+        Double saldoResultante = 0.0;
 
         for (int i = 0; i < listadoCuentas.size(); i++) {
 
-            if(listadoCuentas.get(i).getNumeroCuenta().equals(numCuenta)){
+            if (listadoCuentas.get(i).getNumeroCuenta().equals(numCuenta)) {
                 saldoResultante = listadoCuentas.get(i).getSaldo();
             }
 //            List<User> listadoUsers = listadoCuentas.get(i).getUsers();

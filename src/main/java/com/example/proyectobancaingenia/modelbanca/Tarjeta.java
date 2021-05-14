@@ -96,6 +96,14 @@ public class Tarjeta {
         this.tipoTarjeta = tipoTarjeta;
     }
 
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
+
     // TODO - faltan campos FK
 
     // METODO TOSTRING
