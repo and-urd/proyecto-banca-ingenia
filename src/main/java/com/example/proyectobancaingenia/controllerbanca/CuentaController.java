@@ -42,9 +42,15 @@ public class CuentaController {
 
 
     // Obtenemos el saldo de una cuenta por su numero de cuenta(String)
-//    @GetMapping("/cuenta-saldo/{numCuenta}")
-//    public ResponseEntity<Double> saldoDeCuenta(@PathVariable String numCuenta){
-//
-//
-//    }
+    @GetMapping("/cuenta-saldo/{numCuenta}")
+    public ResponseEntity<Double> saldoDeCuenta(@PathVariable String numCuenta){
+
+        Double saldo = cuentaService.saldoDeCuenta(numCuenta);
+
+        if(saldo == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else{
+            return ResponseEntity.ok().body(saldo);
+        }
+    }
 }

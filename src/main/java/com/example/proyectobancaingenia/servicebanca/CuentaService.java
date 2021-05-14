@@ -12,8 +12,8 @@ public interface CuentaService {
 
 
 
-//    // Recupera todas las cuentas de la bbdd
-//    List<Cuenta> cuentasFindAll();
+    // Recupera el saldo de una cuenta por su numero de cuenta (String)
+    Double saldoDeCuenta(String numCuenta);
 
 
 }

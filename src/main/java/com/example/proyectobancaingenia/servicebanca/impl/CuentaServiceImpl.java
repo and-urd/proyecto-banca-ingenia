@@ -43,14 +43,28 @@ public class CuentaServiceImpl implements CuentaService {
         return listadoResultante;
     }
 
+    @Override
+    public Double saldoDeCuenta(String numCuenta) {
+        List<Cuenta> listadoCuentas = cuentaRepository.findAll();
+
+        Double saldoResultante= 0.0;
+
+        for (int i = 0; i < listadoCuentas.size(); i++) {
+
+            if(listadoCuentas.get(i).getNumeroCuenta().equals(numCuenta)){
+                saldoResultante = listadoCuentas.get(i).getSaldo();
+            }
+//            List<User> listadoUsers = listadoCuentas.get(i).getUsers();
+//
+//            for (int j = 0; j < listadoUsers.size(); j++) {
+//                if(listadoUsers.get(j).getId() == idUsuario)
+//                    listadoResultante.add(listadoCuentas.get(i).getNumeroCuenta());
+//            }
+        }
+
+        return saldoResultante;
+
+    }
 
 
-
-
-
-
-//    @Override
-//    public List<Cuenta> cuentasFindAll() {
-//        return
-//    }
 }
