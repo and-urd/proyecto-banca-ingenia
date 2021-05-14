@@ -1,5 +1,7 @@
 package com.example.proyectobancaingenia.modelbanca;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
@@ -29,9 +31,11 @@ public class Movimiento {
     @Column(name="num_tarjeta")
     private String numTarjeta;
 
+
     @ManyToOne
     @JoinColumn(name="id_cuenta")
     private Cuenta cuenta;
+
 
     @ManyToOne
     @JoinColumn(name="id_categoria")

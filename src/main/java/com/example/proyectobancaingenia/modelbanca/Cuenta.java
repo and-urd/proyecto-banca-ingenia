@@ -1,5 +1,7 @@
 package com.example.proyectobancaingenia.modelbanca;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,7 @@ public class Cuenta {
     @Column(name="saldo")
     private Double saldo;
 
+
     @ManyToMany
     @JoinTable(
             name = "cuentas_users",
@@ -29,9 +32,11 @@ public class Cuenta {
     )
     private List<User> users = new ArrayList<>();
 
+
     @OneToMany(mappedBy = "cuenta")
     private List<Tarjeta> tarjetas = new ArrayList<>();
 
+    @JsonBackReference
     @OneToMany(mappedBy = "cuenta")
     private List<Movimiento> movimientos = new ArrayList<>();
 

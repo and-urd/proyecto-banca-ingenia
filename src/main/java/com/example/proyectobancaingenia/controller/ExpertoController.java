@@ -54,7 +54,7 @@ public class ExpertoController {
 //        }
 //    }
 
-    // Encontrar todos los expertos paginados
+    // Encontrar todos los expertos     paginados
 //    @GetMapping("/expertos")
 //    public Page<Experto> encontrarTodosExpertosPaginacion(@PageableDefault(size=10, page=0) Pageable pageable){
 //        Page<Experto> listaExpertos = expertoService.encontrarTodos(pageable);

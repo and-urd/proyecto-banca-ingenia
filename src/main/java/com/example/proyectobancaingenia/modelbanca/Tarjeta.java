@@ -1,5 +1,7 @@
 package com.example.proyectobancaingenia.modelbanca;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
