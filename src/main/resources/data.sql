@@ -8,12 +8,13 @@ INSERT INTO cuentas(id, numero_cuenta, tipo_cuenta, saldo) VALUES (3, "161165159
 --USERS
 INSERT INTO users(id, username, email, direccion, telefono) VALUES (1, "rafa", "rafa@email.com", "Calle Falsa 123 Malaga", "654123987");
 INSERT INTO users(id, username, email, direccion, telefono) VALUES (2, "andres", "andres@email.com", "Calle Loquesea 268 Malaga", "665165187");
+INSERT INTO users(id, username, email, direccion, telefono) VALUES (3, "joaquin", "joaquin@email.com", "Calle Flores 2 Malaga", "665342211");
 
 --RELACIÓN CUENTAS-USERS
 INSERT INTO cuentas_users(cuenta_id, user_id) VALUES (1, 1);
 INSERT INTO cuentas_users(cuenta_id, user_id) VALUES (1, 2);
-INSERT INTO cuentas_users(cuenta_id, user_id) VALUES (2, 2);
-INSERT INTO cuentas_users(cuenta_id, user_id) VALUES (3, 2);
+INSERT INTO cuentas_users(cuenta_id, user_id) VALUES (2, 3);
+INSERT INTO cuentas_users(cuenta_id, user_id) VALUES (3, 3);
 
 
 --TARJETAS
