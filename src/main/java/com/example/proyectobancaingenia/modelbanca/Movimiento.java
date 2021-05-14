@@ -32,11 +32,12 @@ public class Movimiento {
     private String numTarjeta;
 
 
+
     @ManyToOne
     @JoinColumn(name="id_cuenta")
     private Cuenta cuenta;
 
-
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="id_categoria")
     private Categoria categoria;
