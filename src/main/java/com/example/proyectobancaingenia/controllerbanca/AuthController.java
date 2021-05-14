@@ -1,4 +1,4 @@
-package com.example.proyectobancaingenia.controller;
+package com.example.proyectobancaingenia.controllerbanca;
 
 
 import com.example.proyectobancaingenia.modelbanca.User;
