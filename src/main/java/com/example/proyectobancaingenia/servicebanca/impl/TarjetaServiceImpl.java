@@ -1,6 +1,8 @@
 package com.example.proyectobancaingenia.servicebanca.impl;
 
+import com.example.proyectobancaingenia.modelbanca.Cuenta;
 import com.example.proyectobancaingenia.modelbanca.Tarjeta;
+import com.example.proyectobancaingenia.modelbanca.User;
 import com.example.proyectobancaingenia.repositorybanca.TarjetaRepository;
 import com.example.proyectobancaingenia.servicebanca.CuentaService;
 import com.example.proyectobancaingenia.servicebanca.TarjetaService;
@@ -35,5 +37,26 @@ public class TarjetaServiceImpl implements TarjetaService {
         }
         return listadoResultante;
 
+    }
+
+    @Override
+    public List<String> tarjetasPorIdUsuario(Long idUsuario) {
+
+        List<String> listadoResultado = new ArrayList<>();
+
+        for (Cuenta cuenta: cuentaService.listadoCompletoCuentas()) {
+            for (User user: cuenta.getUsers()) {
+                if(user.getId()== idUsuario){
+                    for (Tarjeta tarjeta : cuenta.getTarjetas()) {
+                        listadoResultado.add(tarjeta.getNumeroTarjeta());
+                    }
+                }
+            }
+        }
+
+
+
+
+        return listadoResultado;
     }
 }
