@@ -7,8 +7,10 @@ import com.example.proyectobancaingenia.repositorybanca.MovimientoRepository;
 import com.example.proyectobancaingenia.servicebanca.MovimientoService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -16,8 +18,36 @@ public class MovimientoServiceImpl implements MovimientoService {
 
     //Inyección del repositorio
     private final MovimientoRepository movimientoRepository;
+//    private final MovimientoDAO movimientoDAO;
     public MovimientoServiceImpl(MovimientoRepository movimientoRepository) {
         this.movimientoRepository = movimientoRepository;
+    }
+
+
+    /*
+    Recuperar Movimientos por IdUsuario y filtralos por Mes, Año y Categoria
+     */
+//    @Override
+//    public List<Movimiento> recuperaMovimientosPorIdUsuarioFiltrados(Long id, Map<String, String> customQuery) {
+//        //TODO: Implementar el filtro por id con el customQuery
+//        List <Movimiento> movimientosPorIdUsuario = recuperaMovimientosPorIdUsuario(id);
+//        return movimientoDAO.movimientosFiltrados(customQuery);
+//    }
+
+
+    @Override
+    public List<Movimiento> recuperaMovimientosPorIdUsuarioFiltrados(Long id, LocalDate fechaOperacion, String tipoCategoria) {
+        List <Movimiento> movimientosPorIdUsuario = recuperaMovimientosPorIdUsuario(id);
+        List <Movimiento> movimientosResultado = new ArrayList<>();
+
+        for (int i = 0; i < movimientosPorIdUsuario.size(); i++) {
+
+            if(fechaOperacion ==  movimientosPorIdUsuario.get(i).getFechaOperacion()
+              && tipoCategoria.equals(movimientosPorIdUsuario.get(i).getCategoria().getTipoCategoria())){
+                movimientosResultado.add(movimientosPorIdUsuario.get(i));
+            }
+        }
+        return movimientosResultado;
     }
 
 
