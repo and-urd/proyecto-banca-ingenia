@@ -2,6 +2,7 @@ package com.example.proyectobancaingenia.modelbanca;
 
 
 import com.example.proyectobancaingenia.modelbanca.Cuenta;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -25,6 +26,9 @@ public class User {
 
     private String telefono;
 
+
+
+    @JsonIgnore
     @ManyToMany (mappedBy = "users")
     private List<Cuenta> cuentas = new ArrayList<>();
 

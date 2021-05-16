@@ -7,9 +7,9 @@ import com.example.proyectobancaingenia.repositorybanca.MovimientoRepository;
 import com.example.proyectobancaingenia.servicebanca.MovimientoService;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovimientoServiceImpl implements MovimientoService {
@@ -48,5 +48,13 @@ public class MovimientoServiceImpl implements MovimientoService {
     @Override
     public List<Movimiento> recuperaTodosMovimientos() {
         return movimientoRepository.findAll();
+    }
+
+    @Override
+    public Optional<Movimiento> movimientoPorId(Long id) {
+
+        Optional<Movimiento> movimiento = movimientoRepository.findById(id);
+
+        return movimiento;
     }
 }

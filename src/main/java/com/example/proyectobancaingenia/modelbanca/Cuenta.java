@@ -36,7 +36,7 @@ public class Cuenta {
     @OneToMany(mappedBy = "cuenta")
     private List<Tarjeta> tarjetas = new ArrayList<>();
 
-    @JsonBackReference
+//    @JsonBackReference
     @OneToMany(mappedBy = "cuenta")
     private List<Movimiento> movimientos = new ArrayList<>();
 

@@ -1,5 +1,8 @@
 package com.example.proyectobancaingenia.modelbanca;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +18,7 @@ public class Categoria {
     @Column(name = "tipo_categoria")
     private String tipoCategoria;
 
+    @JsonBackReference
    @OneToMany(mappedBy = "categoria")
    private List<Movimiento> movimientos = new ArrayList<>();
 
