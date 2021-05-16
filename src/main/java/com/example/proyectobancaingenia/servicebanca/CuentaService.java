@@ -19,4 +19,8 @@ public interface CuentaService {
     Optional <Cuenta> recuperarCuentaPorId(Long id);
 
 
+
+
+    // Recupera todas las cuentas
+    List<Cuenta> listadoCompletoCuentas ();
 }

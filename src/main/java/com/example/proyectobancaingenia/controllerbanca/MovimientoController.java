@@ -1,6 +1,9 @@
 package com.example.proyectobancaingenia.controllerbanca;
 
+import com.example.proyectobancaingenia.modelbanca.Cuenta;
 import com.example.proyectobancaingenia.modelbanca.Movimiento;
+import com.example.proyectobancaingenia.modelbanca.User;
+import com.example.proyectobancaingenia.servicebanca.CuentaService;
 import com.example.proyectobancaingenia.servicebanca.MovimientoService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -10,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,8 +23,10 @@ import java.util.Map;
 public class MovimientoController {
 
     private final MovimientoService movimientoService;
-    public MovimientoController(MovimientoService movimientoService) {
+    private final CuentaService cuentaService;
+    public MovimientoController(MovimientoService movimientoService, CuentaService cuentaService) {
         this.movimientoService = movimientoService;
+        this.cuentaService = cuentaService;
     }
 
     // Devuelve todos los movimientos de la bbdd
@@ -71,11 +77,6 @@ public class MovimientoController {
         }
     }
 
-
-
-
-
-
     // Método para convertir una Lista en un objeto Pageable
     public static <T> Page<T> convertirListAPage(List<T> list, Pageable pageable) {
         int inicio = (int) pageable.getOffset();
@@ -89,4 +90,45 @@ public class MovimientoController {
         }
     }
 
+
+
+
+
+
+
+
+    // Recuperamos los movimientos de un usuario (idUsuario) -> filtramos por Cuenta, Tarjeta o global (todos movimientos)
+    @GetMapping("movimiento-balance/{idUsuario}")
+    public ResponseEntity<List<Movimiento>> movimientoBalance(@PathVariable Long idUsuario){
+
+        // Listado completo cuentas en BBDD
+        List<Cuenta> listadoCuentas = cuentaService.listadoCompletoCuentas();
+
+        // Contendrá los movimientos de todas las cuentas del usuario, o sea, el balace GLOBAL
+        List<Movimiento> listadoMovimientos = new ArrayList<>();
+
+        // Buscamos las cuentas que pertenecen al usuario con idUsuario
+        for (Cuenta cuenta: listadoCuentas) { // Para cada Cuenta del listado
+            for (User user: cuenta.getUsers()   ) { // Para cada User de cuenta
+                if(user.getId() == idUsuario){ // Si la cuenta pertenece al usuario idUsuario, agregamos los movimientos de esta cuenta
+                    listadoMovimientos.addAll(cuenta.getMovimientos());
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+        if( ! listadoCuentas.isEmpty()){
+            return ResponseEntity.ok().body(listadoMovimientos);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
 }

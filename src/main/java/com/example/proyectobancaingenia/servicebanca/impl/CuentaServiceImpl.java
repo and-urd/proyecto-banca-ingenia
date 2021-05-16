@@ -27,6 +27,8 @@ public class CuentaServiceImpl implements CuentaService {
     }
 
 
+
+
     // Devuelve las cuentas de un usuario por su id
     @Override
     public List<String> cuentasDeUsuarioPorId(Long idUsuario) {
@@ -70,6 +72,14 @@ public class CuentaServiceImpl implements CuentaService {
 
         return saldoResultante;
 
+    }
+
+
+
+
+    @Override
+    public List<Cuenta> listadoCompletoCuentas() {
+        return cuentaRepository.findAll();
     }
 
 

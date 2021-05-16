@@ -1,6 +1,7 @@
 package com.example.proyectobancaingenia.controllerbanca;
 
 import com.example.proyectobancaingenia.modelbanca.Cuenta;
+import com.example.proyectobancaingenia.modelbanca.Movimiento;
 import com.example.proyectobancaingenia.modelbanca.User;
 import com.example.proyectobancaingenia.servicebanca.CuentaService;
 import org.slf4j.Logger;
@@ -25,7 +26,7 @@ public class CuentaController {
         this.cuentaService = cuentaService;
     }
 
-    // Recupera cuentas de un usuario por su id
+    // Recupera las cuentas de un usuario por su id
     // Devuelve un listado(string) de los numeros de cuenta
     @GetMapping("/cuenta-numeroscuenta/{id}")
     public ResponseEntity<List<String>> cuentasDeUsuarioPorId(@PathVariable Long id){
@@ -53,4 +54,24 @@ public class CuentaController {
             return ResponseEntity.ok().body(saldo);
         }
     }
+
+
+
+    // Recuperamos todas las cuentas existentes en la BBDD
+    @GetMapping("cuentas")
+    public ResponseEntity<List<Cuenta>> listadoCompletoCuentas(){
+        List<Cuenta> listado = cuentaService.listadoCompletoCuentas();
+
+        if(listado.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else{
+            return ResponseEntity.ok().body(listado);
+        }
+    }
+
+
+
+
+
+
 }

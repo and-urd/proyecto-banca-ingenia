@@ -62,3 +62,11 @@ INSERT INTO movimientos (id, concepto, fecha_operacion, fecha_valor, cantidad, s
 INSERT INTO movimientos (id, concepto, fecha_operacion, fecha_valor, cantidad, saldo_actual, num_tarjeta, id_cuenta, id_categoria) VALUES (22, "Repsol", "2021-06-23", "2021-06-23", -50, 2400,"15165165", 1, 2);
 INSERT INTO movimientos (id, concepto, fecha_operacion, fecha_valor, cantidad, saldo_actual, num_tarjeta, id_cuenta, id_categoria) VALUES (23, "Mediamarkt", "2021-06-24", "2021-06-24", -200, 2200,"", 1, 6);
 INSERT INTO movimientos (id, concepto, fecha_operacion, fecha_valor, cantidad, saldo_actual, num_tarjeta, id_cuenta, id_categoria) VALUES (24, "Movistar", "2021-06-25", "2021-06-25", -50, 2150,"", 1, 8);
+
+
+INSERT INTO movimientos (id, concepto, fecha_operacion, fecha_valor, cantidad, saldo_actual, num_tarjeta, id_cuenta, id_categoria) VALUES (25, "Repsol", "2021-07-23", "2021-07-23", -50, 2400,"23432433", 2, 2);
+INSERT INTO movimientos (id, concepto, fecha_operacion, fecha_valor, cantidad, saldo_actual, num_tarjeta, id_cuenta, id_categoria) VALUES (26, "Mediamarkt", "2021-07-24", "2021-07-24", -200, 2200,"", 2, 6);
+INSERT INTO movimientos (id, concepto, fecha_operacion, fecha_valor, cantidad, saldo_actual, num_tarjeta, id_cuenta, id_categoria) VALUES (27, "Movistar", "2021-07-25", "2021-07-25", -50, 2150,"", 2, 8);
+
+INSERT INTO movimientos (id, concepto, fecha_operacion, fecha_valor, cantidad, saldo_actual, num_tarjeta, id_cuenta, id_categoria) VALUES (28, "ingreso", "2021-08-1", "2021-08-1", 50, 1400,"89789873", 3, 1);
+INSERT INTO movimientos (id, concepto, fecha_operacion, fecha_valor, cantidad, saldo_actual, num_tarjeta, id_cuenta, id_categoria) VALUES (29, "ingreso", "2021-08-5", "2021-08-5", 50, 1450,"89789873", 3, 1);
