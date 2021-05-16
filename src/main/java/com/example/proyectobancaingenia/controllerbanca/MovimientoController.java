@@ -1,5 +1,6 @@
 package com.example.proyectobancaingenia.controllerbanca;
 
+import com.example.proyectobancaingenia.modelbanca.Categoria;
 import com.example.proyectobancaingenia.modelbanca.Cuenta;
 import com.example.proyectobancaingenia.modelbanca.Movimiento;
 import com.example.proyectobancaingenia.modelbanca.User;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +29,24 @@ public class MovimientoController {
     public MovimientoController(MovimientoService movimientoService, CuentaService cuentaService) {
         this.movimientoService = movimientoService;
         this.cuentaService = cuentaService;
+    }
+
+//    @GetMapping("movimiento-filtrado/{idUsuario}")
+//    public ResponseEntity<List<Movimiento>> movimientoFiltrado(@PathVariable Long idUsuario, @RequestParam Map<String, String> customQuery){
+//        return ResponseEntity.ok(movimientoService.recuperaMovimientosPorIdUsuarioFiltrados(idUsuario, customQuery));
+//    }
+
+    @GetMapping("movimiento-filtrado/{idUsuario}")
+    public ResponseEntity<List<Movimiento>> movimientoFiltrado(@PathVariable Long idUsuario, @RequestParam LocalDate fechaOperacion, @RequestParam String tipoCategoria){
+
+        List<Movimiento>movimientosFiltrados = movimientoService.recuperaMovimientosPorIdUsuarioFiltrados(idUsuario, fechaOperacion, tipoCategoria);
+
+        if( ! movimientosFiltrados.isEmpty()){
+            return ResponseEntity.ok().body(movimientosFiltrados);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
     }
 
     // Devuelve todos los movimientos de la bbdd
