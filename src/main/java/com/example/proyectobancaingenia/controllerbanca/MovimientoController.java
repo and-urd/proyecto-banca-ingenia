@@ -43,18 +43,18 @@ public class MovimientoController {
 //        return ResponseEntity.ok(movimientoService.recuperaMovimientosPorIdUsuarioFiltrados(idUsuario, customQuery));
 //    }
 
-    @GetMapping("movimiento-filtrado/{idUsuario}")
-    public ResponseEntity<List<Movimiento>> movimientoFiltrado(@PathVariable Long idUsuario, @RequestParam LocalDate fechaOperacion, @RequestParam String tipoCategoria){
-
-        List<Movimiento>movimientosFiltrados = movimientoService.recuperaMovimientosPorIdUsuarioFiltrados(idUsuario, fechaOperacion, tipoCategoria);
-
-        if( ! movimientosFiltrados.isEmpty()){
-            return ResponseEntity.ok().body(movimientosFiltrados);
-        }else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-    }
+//    @GetMapping("movimiento-filtrado/{idUsuario}")
+//    public ResponseEntity<List<Movimiento>> movimientoFiltrado(@PathVariable Long idUsuario, @RequestParam LocalDate fechaOperacion, @RequestParam String tipoCategoria){
+//
+//        List<Movimiento>movimientosFiltrados = movimientoService.recuperaMovimientosPorIdUsuarioFiltrados(idUsuario, fechaOperacion, tipoCategoria);
+//
+//        if( ! movimientosFiltrados.isEmpty()){
+//            return ResponseEntity.ok().body(movimientosFiltrados);
+//        }else{
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//
+//    }
 
     // Devuelve todos los movimientos de la bbdd
     @GetMapping("/movimientos")
