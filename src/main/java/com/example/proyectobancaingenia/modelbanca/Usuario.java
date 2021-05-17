@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="users")
-public class User {
+@Table(name="usuarios")
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +32,10 @@ public class User {
     @ManyToMany (mappedBy = "users")
     private List<Cuenta> cuentas = new ArrayList<>();
 
-    public User() {
+    public Usuario() {
     }
 
-    public User(String username, String email, String password) {
+    public Usuario(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;

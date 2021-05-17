@@ -6,9 +6,9 @@ INSERT INTO cuentas(id, numero_cuenta, tipo_cuenta, saldo) VALUES (2, "651657789
 INSERT INTO cuentas(id, numero_cuenta, tipo_cuenta, saldo) VALUES (3, "16116515947", "Pensiones", 2000);
 
 --USERS
-INSERT INTO users(id, username, email, direccion, telefono) VALUES (1, "rafa", "rafa@email.com", "Calle Falsa 123 Malaga", "654123987");
-INSERT INTO users(id, username, email, direccion, telefono) VALUES (2, "andres", "andres@email.com", "Calle Loquesea 268 Malaga", "665165187");
-INSERT INTO users(id, username, email, direccion, telefono) VALUES (3, "joaquin", "joaquin@email.com", "Calle Flores 2 Malaga", "665342211");
+INSERT INTO usuarios(id, username, email, direccion, telefono) VALUES (1, "rafa", "rafa@email.com", "Calle Falsa 123 Malaga", "654123987");
+INSERT INTO usuarios(id, username, email, direccion, telefono) VALUES (2, "andres", "andres@email.com", "Calle Loquesea 268 Malaga", "665165187");
+INSERT INTO usuarios(id, username, email, direccion, telefono) VALUES (3, "joaquin", "joaquin@email.com", "Calle Flores 2 Malaga", "665342211");
 
 --RELACIÓN CUENTAS-USERS
 INSERT INTO cuentas_users(cuenta_id, user_id) VALUES (1, 1);

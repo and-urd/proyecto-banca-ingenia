@@ -1,7 +1,7 @@
 package com.example.proyectobancaingenia.servicebanca.impl;
 
 import com.example.proyectobancaingenia.modelbanca.Cuenta;
-import com.example.proyectobancaingenia.modelbanca.User;
+import com.example.proyectobancaingenia.modelbanca.Usuario;
 import com.example.proyectobancaingenia.repositorybanca.CuentaRepository;
 import com.example.proyectobancaingenia.servicebanca.CuentaService;
 import org.springframework.stereotype.Service;
@@ -39,7 +39,7 @@ public class CuentaServiceImpl implements CuentaService {
 
         for (int i = 0; i < listadoCuentas.size(); i++) {
 
-            List<User> listadoUsers = listadoCuentas.get(i).getUsers();
+            List<Usuario> listadoUsers = listadoCuentas.get(i).getUsers();
 
             for (int j = 0; j < listadoUsers.size(); j++) {
                 if (listadoUsers.get(j).getId() == idUsuario)
@@ -80,6 +80,15 @@ public class CuentaServiceImpl implements CuentaService {
     @Override
     public List<Cuenta> listadoCompletoCuentas() {
         return cuentaRepository.findAll();
+    }
+
+    @Override
+    public Cuenta crearCuenta(Cuenta cuenta) {
+        if(cuenta.getId() == null){
+            return cuentaRepository.save(cuenta);
+        }else{
+            return null;
+        }
     }
 
 

@@ -1,17 +1,13 @@
 package com.example.proyectobancaingenia.controllerbanca;
 
 import com.example.proyectobancaingenia.modelbanca.Cuenta;
-import com.example.proyectobancaingenia.modelbanca.Movimiento;
-import com.example.proyectobancaingenia.modelbanca.User;
 import com.example.proyectobancaingenia.servicebanca.CuentaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -70,8 +66,17 @@ public class CuentaController {
     }
 
 
+    // Crea una nueva cuenta
+    @PostMapping("cuenta-crear")
+    public ResponseEntity<Cuenta> crearCuenta(@RequestBody Cuenta cuenta){
+        Cuenta cuentaCreada = cuentaService.crearCuenta(cuenta);
 
-
+        if(cuentaCreada == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }else{
+            return ResponseEntity.ok().body(cuentaCreada);
+        }
+    }
 
 
 }

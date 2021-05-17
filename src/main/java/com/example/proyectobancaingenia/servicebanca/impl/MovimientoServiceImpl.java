@@ -3,16 +3,13 @@ package com.example.proyectobancaingenia.servicebanca.impl;
 //import com.example.proyectobancaingenia.daobanca.MovimientoDAO;
 import com.example.proyectobancaingenia.modelbanca.Cuenta;
 import com.example.proyectobancaingenia.modelbanca.Movimiento;
-import com.example.proyectobancaingenia.modelbanca.User;
+import com.example.proyectobancaingenia.modelbanca.Usuario;
 import com.example.proyectobancaingenia.repositorybanca.MovimientoRepository;
 import com.example.proyectobancaingenia.servicebanca.MovimientoService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -68,7 +65,7 @@ public class MovimientoServiceImpl implements MovimientoService {
 
             Cuenta cuenta = listMovimientos.get(i).getCuenta();
 
-            List<User> listadoUsuarios = cuenta.getUsers();
+            List<Usuario> listadoUsuarios = cuenta.getUsers();
 
             for (int j = 0; j < listadoUsuarios.size(); j++) {
                 if(listadoUsuarios.get(j).getId() == idUsuario)

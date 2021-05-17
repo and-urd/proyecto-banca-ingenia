@@ -1,7 +1,7 @@
 package com.example.proyectobancaingenia.security.service;
 
 
-import com.example.proyectobancaingenia.modelbanca.User;
+import com.example.proyectobancaingenia.modelbanca.Usuario;
 import com.example.proyectobancaingenia.repositorybanca.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,7 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
+        Usuario user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
 
         return new org.springframework.security.core.userdetails.User(

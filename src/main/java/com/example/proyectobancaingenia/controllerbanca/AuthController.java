@@ -1,7 +1,7 @@
 package com.example.proyectobancaingenia.controllerbanca;
 
 
-import com.example.proyectobancaingenia.modelbanca.User;
+import com.example.proyectobancaingenia.modelbanca.Usuario;
 import com.example.proyectobancaingenia.payload.request.LoginRequest;
 import com.example.proyectobancaingenia.payload.request.SignupRequest;
 import com.example.proyectobancaingenia.payload.response.JwtResponse;
@@ -73,7 +73,7 @@ public class AuthController<JwtUtils> {
         }
 
         // Create new user's account
-        User user = new User(signUpRequest.getUsername(),
+        Usuario user = new Usuario(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()));
 

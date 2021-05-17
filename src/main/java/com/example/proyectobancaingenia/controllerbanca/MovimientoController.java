@@ -1,9 +1,8 @@
 package com.example.proyectobancaingenia.controllerbanca;
 
-import com.example.proyectobancaingenia.modelbanca.Categoria;
 import com.example.proyectobancaingenia.modelbanca.Cuenta;
 import com.example.proyectobancaingenia.modelbanca.Movimiento;
-import com.example.proyectobancaingenia.modelbanca.User;
+import com.example.proyectobancaingenia.modelbanca.Usuario;
 import com.example.proyectobancaingenia.servicebanca.CuentaService;
 import com.example.proyectobancaingenia.servicebanca.MovimientoService;
 import com.example.proyectobancaingenia.servicebanca.TarjetaService;
@@ -16,7 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -115,7 +113,6 @@ public class MovimientoController {
         }
     }
 
-
     // Recuperamos los movimientos de un usuario (idUsuario) -> filtramos por Cuenta, Tarjeta o global (todos movimientos)
     @GetMapping("movimiento-balance/{idUsuario}")
     public ResponseEntity<List<Movimiento>> movimientoBalance(@PathVariable Long idUsuario, @RequestParam Map<String, String> parametros) {
@@ -123,10 +120,6 @@ public class MovimientoController {
         // Si no Existe ningún usuario con el idUsuario
         if( ! userService.existeUserConId(idUsuario))
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
-
-
-
 
 
         // Listado completo cuentas en BBDD
@@ -140,7 +133,7 @@ public class MovimientoController {
         if (parametros.size() == 0) {
             // Buscamos las cuentas que pertenecen al usuario con idUsuario
             for (Cuenta elementoCuenta : listadoCuentas) { // Para cada Cuenta del listado
-                for (User user : elementoCuenta.getUsers()) { // Para cada User de cuenta
+                for (Usuario user : elementoCuenta.getUsers()) { // Para cada User de cuenta
                     if (user.getId() == idUsuario) { // Si la cuenta pertenece al usuario idUsuario, agregamos los movimientos de esta cuenta
                         listadoMovimientos.addAll(elementoCuenta.getMovimientos());
                     }
@@ -210,7 +203,7 @@ public class MovimientoController {
 
 
             for (Cuenta elementoCuenta : listadoCuentas) { // Para cada Cuenta del listado
-                for (User user : elementoCuenta.getUsers()) { // Para cada User de cuenta
+                for (Usuario user : elementoCuenta.getUsers()) { // Para cada User de cuenta
                     if (user.getId() == idUsuario) { // Si la cuenta pertenece al usuario idUsuario, agregamos los movimientos de esta cuenta
 
                         for (Movimiento movimiento : elementoCuenta.getMovimientos()) {
