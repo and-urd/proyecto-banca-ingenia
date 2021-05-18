@@ -1,8 +1,12 @@
 package com.example.proyectobancaingenia.service.impl;
 
 import com.example.proyectobancaingenia.model.Cuenta;
+import com.example.proyectobancaingenia.model.Movimiento;
+import com.example.proyectobancaingenia.model.Tarjeta;
 import com.example.proyectobancaingenia.model.Usuario;
 import com.example.proyectobancaingenia.repository.CuentaRepository;
+import com.example.proyectobancaingenia.repository.MovimientoRepository;
+import com.example.proyectobancaingenia.repository.TarjetaRepository;
 import com.example.proyectobancaingenia.service.CuentaService;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +19,13 @@ public class CuentaServiceImpl implements CuentaService {
 
     // Inyección del repositorio
     private final CuentaRepository cuentaRepository;
+    private final TarjetaRepository tarjetaRepository;
+    private final MovimientoRepository movimientoRepository;
 
-    public CuentaServiceImpl(CuentaRepository cuentaRepository) {
+    public CuentaServiceImpl(CuentaRepository cuentaRepository, TarjetaRepository tarjetaRepository, MovimientoRepository movimientoRepository) {
         this.cuentaRepository = cuentaRepository;
+        this.tarjetaRepository = tarjetaRepository;
+        this.movimientoRepository = movimientoRepository;
     }
 
     // Devuelve una cuenta por ID
@@ -25,8 +33,6 @@ public class CuentaServiceImpl implements CuentaService {
     public Optional<Cuenta> recuperarCuentaPorId(Long id) {
         return cuentaRepository.findById(id);
     }
-
-
 
 
     // Devuelve las cuentas de un usuario por su id
@@ -75,8 +81,6 @@ public class CuentaServiceImpl implements CuentaService {
     }
 
 
-
-
     @Override
     public List<Cuenta> listadoCompletoCuentas() {
         return cuentaRepository.findAll();
@@ -84,12 +88,46 @@ public class CuentaServiceImpl implements CuentaService {
 
     @Override
     public Cuenta crearCuenta(Cuenta cuenta) {
-        if(cuenta.getId() == null){
-            return cuentaRepository.save(cuenta);
-        }else{
+        Cuenta cuentaNueva;
+
+        if (cuenta.getId() == null) {
+
+            cuentaNueva = cuentaRepository.save(cuenta);
+
+            // Tarjetas
+            List<Tarjeta> listaTarjetas = new ArrayList<>();
+
+            for (Tarjeta tarjeta : cuenta.getTarjetas()) {
+                Tarjeta tarjetaNueva = tarjeta;
+
+                tarjetaNueva.setCuenta(cuentaNueva);
+                tarjetaRepository.save(tarjetaNueva);
+                listaTarjetas.add(tarjetaNueva);
+            }
+
+            cuentaNueva.setTarjetas(listaTarjetas);
+
+
+            // Movimientos
+            List<Movimiento> listaMovimientos = new ArrayList<>();
+
+            for (Movimiento movimiento : cuenta.getMovimientos()) {
+                Movimiento movimientoNuevo = movimiento;
+
+                movimientoNuevo.setCuenta(cuentaNueva);
+                movimientoRepository.save(movimientoNuevo);
+                listaMovimientos.add(movimientoNuevo);
+            }
+
+            cuentaNueva.setMovimientos(listaMovimientos);
+
+
+            return cuentaNueva;
+
+        } else {
             return null;
         }
+
+
     }
-
-
 }
