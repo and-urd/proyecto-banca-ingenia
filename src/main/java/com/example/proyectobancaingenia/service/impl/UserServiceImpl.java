@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     // Inyección del repositorio userRepository
+
     private final UserRepository userRepository;
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
