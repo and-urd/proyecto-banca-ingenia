@@ -1,4 +1,4 @@
-
+--
 --CUENTAS
 INSERT INTO cuentas(id, numero_cuenta, tipo_cuenta, saldo) VALUES (1, "23984238947", "Corriente", 2150);
 INSERT INTO cuentas(id, numero_cuenta, tipo_cuenta, saldo) VALUES (2, "65165778947", "Pensiones", 1000);
