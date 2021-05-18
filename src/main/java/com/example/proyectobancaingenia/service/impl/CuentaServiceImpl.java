@@ -88,46 +88,46 @@ public class CuentaServiceImpl implements CuentaService {
 
     @Override
     public Cuenta crearCuenta(Cuenta cuenta) {
-        Cuenta cuentaNueva;
+//        Cuenta cuentaNueva;
+//
+//        if (cuenta.getId() == null) {
+//
+//            cuentaNueva = cuentaRepository.save(cuenta);
+//
+//            // Tarjetas
+//            List<Tarjeta> listaTarjetas = new ArrayList<>();
+//
+//            for (Tarjeta tarjeta : cuenta.getTarjetas()) {
+//                Tarjeta tarjetaNueva = tarjeta;
+//
+//                tarjetaNueva.setCuenta(cuentaNueva);
+//                tarjetaRepository.save(tarjetaNueva);
+//                listaTarjetas.add(tarjetaNueva);
+//            }
+//
+//            cuentaNueva.setTarjetas(listaTarjetas);
+//
+//
+//            // Movimientos
+//            List<Movimiento> listaMovimientos = new ArrayList<>();
+//
+//            for (Movimiento movimiento : cuenta.getMovimientos()) {
+//                Movimiento movimientoNuevo = movimiento;
+//
+//                movimientoNuevo.setCuenta(cuentaNueva);
+//                movimientoRepository.save(movimientoNuevo);
+//                listaMovimientos.add(movimientoNuevo);
+//            }
+//
+//            cuentaNueva.setMovimientos(listaMovimientos);
+//
+//
+//            return cuentaNueva;
+//
+//        } else {
+//            return null;
+//        }
 
-        if (cuenta.getId() == null) {
-
-            cuentaNueva = cuentaRepository.save(cuenta);
-
-            // Tarjetas
-            List<Tarjeta> listaTarjetas = new ArrayList<>();
-
-            for (Tarjeta tarjeta : cuenta.getTarjetas()) {
-                Tarjeta tarjetaNueva = tarjeta;
-
-                tarjetaNueva.setCuenta(cuentaNueva);
-                tarjetaRepository.save(tarjetaNueva);
-                listaTarjetas.add(tarjetaNueva);
-            }
-
-            cuentaNueva.setTarjetas(listaTarjetas);
-
-
-            // Movimientos
-            List<Movimiento> listaMovimientos = new ArrayList<>();
-
-            for (Movimiento movimiento : cuenta.getMovimientos()) {
-                Movimiento movimientoNuevo = movimiento;
-
-                movimientoNuevo.setCuenta(cuentaNueva);
-                movimientoRepository.save(movimientoNuevo);
-                listaMovimientos.add(movimientoNuevo);
-            }
-
-            cuentaNueva.setMovimientos(listaMovimientos);
-
-
-            return cuentaNueva;
-
-        } else {
-            return null;
-        }
-
-
+        return null;
     }
 }
