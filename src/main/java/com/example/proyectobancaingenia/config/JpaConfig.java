@@ -13,10 +13,4 @@ public class JpaConfig {
     @Autowired
     private EntityManagerFactory entityManagerFactory;
 
-//    @Bean
-//    public Session getSession(){
-//        SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
-//        Session session = sessionFactory.openSession();
-//        return  session;
-//    }
 }

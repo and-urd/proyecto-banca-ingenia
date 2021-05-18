@@ -1,8 +1,8 @@
 package com.example.proyectobancaingenia.security.service;
 
 
-import com.example.proyectobancaingenia.modelbanca.Usuario;
-import com.example.proyectobancaingenia.repositorybanca.UserRepository;
+import com.example.proyectobancaingenia.model.Usuario;
+import com.example.proyectobancaingenia.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
