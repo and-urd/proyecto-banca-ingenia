@@ -1,6 +1,6 @@
 package com.example.proyectobancaingenia.service.impl;
 
-//import com.example.proyectobancaingenia.dao.MovimientoDAO;
+import com.example.proyectobancaingenia.dao.MovimientoDAO;
 import com.example.proyectobancaingenia.model.Cuenta;
 import com.example.proyectobancaingenia.model.Movimiento;
 import com.example.proyectobancaingenia.model.Usuario;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -17,39 +18,26 @@ public class MovimientoServiceImpl implements MovimientoService {
 
     //Inyección del repositorio
     private final MovimientoRepository movimientoRepository;
-//    private final MovimientoDAO movimientoDAO;
+    private final MovimientoDAO movimientoDAO;
 
-    public MovimientoServiceImpl(MovimientoRepository movimientoRepository) {
+    public MovimientoServiceImpl(MovimientoRepository movimientoRepository, MovimientoDAO movimientoDAO) {
         this.movimientoRepository = movimientoRepository;
+        this.movimientoDAO = movimientoDAO;
     }
 
 
     /*
-    Recuperar Movimientos por IdUsuario y filtralos por Mes, Año y Categoria
+    Recupera Movimientos por IdUsuario (¿cambiar a idCuenta?) y los filtra por un rango de Fecha y Categoria
      */
-//    @Override
-//    public List<Movimiento> recuperaMovimientosPorIdUsuarioFiltrados(Long id, Map<String, String> customQuery) {
-//        if (recuperaMovimientosPorIdUsuario(id) == null){
-//            return null;
-//        }
-//        return movimientoDAO.movimientosFiltrados(customQuery);
-//    }
+    @Override
+    public List<Movimiento> recuperaMovimientosPorIdUsuarioFiltrados(Long id, Map<String, String> customQuery) {
+        if (recuperaMovimientosPorIdUsuario(id) == null){
+            return null;
+        }
+        return movimientoDAO.movimientosFiltrados(customQuery);
+    }
 
 
-//    @Override
-//    public List<Movimiento> recuperaMovimientosPorIdUsuarioFiltrados(Long id, LocalDate fechaOperacion, String tipoCategoria) {
-//        List <Movimiento> movimientosPorIdUsuario = recuperaMovimientosPorIdUsuario(id);
-//        List <Movimiento> movimientosResultado = new ArrayList<>();
-//
-//        for (int i = 0; i < movimientosPorIdUsuario.size(); i++) {
-//
-//            if(fechaOperacion ==  movimientosPorIdUsuario.get(i).getFechaOperacion()
-//              && tipoCategoria.equals(movimientosPorIdUsuario.get(i).getCategoria().getTipoCategoria())){
-//                movimientosResultado.add(movimientosPorIdUsuario.get(i));
-//            }
-//        }
-//        return movimientosResultado;
-//    }
 
 
     @Override

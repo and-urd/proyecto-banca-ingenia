@@ -36,23 +36,11 @@ public class MovimientoController {
         this.tarjetaService = tarjetaService;
     }
 
-//    @GetMapping("movimiento-filtrado/{idUsuario}")
-//    public ResponseEntity<List<Movimiento>> movimientoFiltrado(@PathVariable Long idUsuario, @RequestParam Map<String, String> customQuery){
-//        return ResponseEntity.ok(movimientoService.recuperaMovimientosPorIdUsuarioFiltrados(idUsuario, customQuery));
-//    }
-
-//    @GetMapping("movimiento-filtrado/{idUsuario}")
-//    public ResponseEntity<List<Movimiento>> movimientoFiltrado(@PathVariable Long idUsuario, @RequestParam LocalDate fechaOperacion, @RequestParam String tipoCategoria){
-//
-//        List<Movimiento>movimientosFiltrados = movimientoService.recuperaMovimientosPorIdUsuarioFiltrados(idUsuario, fechaOperacion, tipoCategoria);
-//
-//        if( ! movimientosFiltrados.isEmpty()){
-//            return ResponseEntity.ok().body(movimientosFiltrados);
-//        }else{
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//
-//    }
+    // Devuelve los movimientos que pertenecen a un usarrio filtrados por un rango de fecha y la categoria
+    @GetMapping("movimiento-filtrado/{idUsuario}")
+    public ResponseEntity<List<Movimiento>> movimientoFiltrado(@PathVariable Long idUsuario, @RequestParam Map<String, String> customQuery){
+        return ResponseEntity.ok(movimientoService.recuperaMovimientosPorIdUsuarioFiltrados(idUsuario, customQuery));
+    }
 
     // Devuelve todos los movimientos de la bbdd
     @GetMapping("/movimientos")
@@ -68,7 +56,7 @@ public class MovimientoController {
 
     // Devuelve los movimientos de un usarios paginados y con limite
     @GetMapping("/movimientos-usuario/{idUsuario}")
-    public Page<Movimiento> movimientosPorIdUsuario(@PathVariable Long idUsuario, @RequestParam Map<String, String> parametros) {
+    public Page<Movimiento> movimientosPorIdCuenta(@PathVariable Long idUsuario, @RequestParam Map<String, String> parametros) {
 
         int page, size;
         // Valores por defecto para -> page , size
